@@ -24,10 +24,16 @@ object InsertMysqlDemo {
       CardMember("member_1", "季卡", new Timestamp(System.currentTimeMillis()), 93, false, new Date(System.currentTimeMillis()), 124224, 0.362f)
     )
     val memberDF = memberSeq.toDF()
-    MySQLUtils.saveDFtoDBCreateTableIfNotExist("member_test", memberDF)
-    MySQLUtils.insertOrUpdateDFtoDBUsePool("member_test", memberDF, Array("user", "salary"))
-    MySQLUtils.getDFFromMysql(hiveContext, "", null)
+    try {
+      MySQLUtils.saveDFtoDBCreateTableIfNotExist("member_test", memberDF)
+//      MySQLUtils.insertOrUpdateDFtoDBUsePool("member_test", memberDF, Array("user", "salary"))
+//      MySQLUtils.getDFFromMysql(hiveContext, "", null)
+    } catch {
+      case ex:NullPointerException =>{
+        println("")
+      }
 
+    }
 
     sparkContext.stop()
   }

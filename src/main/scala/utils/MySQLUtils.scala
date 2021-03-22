@@ -299,7 +299,7 @@ object MySQLUtils {
     def createTableIfNotExist(tableName: String, df: DataFrame): AnyVal = {
 
       val con = MySQLPoolManager.getMysqlManager.getConnection
-      println("in")
+
       val metaData = con.getMetaData
       val colResultSet = metaData.getColumns(null, "%", tableName, "%")
       //如果没有该表,创建数据表

@@ -9,5 +9,11 @@ object PropertyUtils {
     val prop = new Properties
     prop.load(result)
     prop.getProperty(propertyKey)
+
   }
+
+//  def main(args: Array[String]): Unit = {
+//    println( getFileProperties("mysql-user.properties","mysql.pool.jdbc.maxStatements"))
+//  }
+
 }
