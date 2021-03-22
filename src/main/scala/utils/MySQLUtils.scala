@@ -90,12 +90,12 @@ object MySQLUtils {
     }
 
     /** 以元组的方式返回mysql属性信息 **/
-    def getMySQLInfo: (String, String, String) = {
-      val jdbcURL = PropertyUtils.getFileProperties("mysql-user.properties", "mysql.jdbc.url")
-      val userName = PropertyUtils.getFileProperties("mysql-user.properties", "mysql.jdbc.username")
-      val passWord = PropertyUtils.getFileProperties("mysql-user.properties", "mysql.jdbc.password")
-      (jdbcURL, userName, passWord)
-    }
+//    def getMySQLInfo: (String, String, String) = {
+//      val jdbcURL = PropertyUtils.getFileProperties("mysql-user.properties", "mysql.jdbc.url")
+//      val userName = PropertyUtils.getFileProperties("mysql-user.properties", "mysql.jdbc.username")
+//      val passWord = PropertyUtils.getFileProperties("mysql-user.properties", "mysql.jdbc.password")
+//      (jdbcURL, userName, passWord)
+//    }
 
     /**
      * 从MySql数据库中获取DateFrame
@@ -105,17 +105,17 @@ object MySQLUtils {
      * @param queryCondition 查询条件(可选)
      * @return DateFrame
      */
-    def getDFFromMysql(sqlContext: SQLContext, mysqlTableName: String, queryCondition: String): DataFrame = {
-      val (jdbcURL, userName, passWord) = getMySQLInfo
-      val prop = new Properties()
-      prop.put("user", userName)
-      prop.put("password", passWord)
-
-      if (null == queryCondition || "" == queryCondition)
-        sqlContext.read.jdbc(jdbcURL, mysqlTableName, prop)
-      else
-        sqlContext.read.jdbc(jdbcURL, mysqlTableName, prop).where(queryCondition)
-    }
+//    def getDFFromMysql(sqlContext: SQLContext, mysqlTableName: String, queryCondition: String): DataFrame = {
+//      val (jdbcURL, userName, passWord) = getMySQLInfo
+//      val prop = new Properties()
+//      prop.put("user", userName)
+//      prop.put("password", passWord)
+//
+//      if (null == queryCondition || "" == queryCondition)
+//        sqlContext.read.jdbc(jdbcURL, mysqlTableName, prop)
+//      else
+//        sqlContext.read.jdbc(jdbcURL, mysqlTableName, prop).where(queryCondition)
+//    }
 
     /**
      * 删除数据表

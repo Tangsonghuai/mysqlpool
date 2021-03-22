@@ -27,7 +27,7 @@ object MySQLPoolManager {
 
     try {
 
-      
+      println(PropertyUtils.getFileProperties("mysql-user.properties", "fts_common_jdbc_driver"))
 
       cpds.setUser(PropertyUtils.getFileProperties("mysql-user.properties", "mysql.pool.jdbc.userName"))
       cpds.setPassword(PropertyUtils.getFileProperties("mysql-user.properties", "mysql.pool.jdbc.passWord"))
